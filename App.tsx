@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import { LanguageProvider, useLanguage } from './components/LanguageContext.tsx';
 import { Header } from './components/Header.tsx';
 import { Footer } from './components/Footer.tsx';
@@ -158,6 +159,7 @@ const App: React.FC = () => {
             <IconMap.MessageCircle className="w-8 h-8" />
           </a>
         </div>
+        <Analytics />
       </Router>
     </LanguageProvider>
   );
