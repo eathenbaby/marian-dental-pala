@@ -38,7 +38,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     
     // Update body background color
     if (theme === 'light') {
-      document.body.style.backgroundColor = '#FFFFFF'; // Pure white for medical trust
+      document.body.style.backgroundColor = '#FAFBFC'; // Soft off-white for medical trust
     } else {
       document.body.style.backgroundColor = '#0B1120'; // Dark
     }

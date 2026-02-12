@@ -44,6 +44,19 @@ html.dark {
   --white: #1F2937;
 }
 
+/* Light Mode Enhancements */
+html.light {
+  --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.06);
+  --shadow-large: 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+html.dark {
+  --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-large: 0 12px 32px rgba(0, 0, 0, 0.5);
+}
+
 /* Reset & Base */
 * {
   margin: 0;
@@ -435,6 +448,40 @@ body {
     opacity: 1;
     transform: translateX(0);
   }
+}
+
+/* Theme Toggle Switch */
+.theme-toggle {
+  position: relative;
+  width: 56px;
+  height: 28px;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(135deg, #0EA5E9 0%, #3B82F6 100%);
+}
+
+html.dark .theme-toggle {
+  background: linear-gradient(135deg, #1F2937 0%, #374151 100%);
+}
+
+.theme-toggle-slider {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 24px;
+  height: 24px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+html.dark .theme-toggle-slider {
+  transform: translateX(28px);
 }
 
 .fade-in {

@@ -60,13 +60,29 @@ export const Header: React.FC = () => {
 
           {/* Desktop Right Actions */}
           <div className="hidden lg:flex items-center gap-4">
-            {/* Theme Toggle */}
+            {/* Theme Toggle - Modern Switch */}
             <button
               onClick={toggleTheme}
-              className="p-2.5 border border-gray-200 dark:border-white/10 rounded-xl text-gray-600 dark:text-white hover:bg-gray-50 dark:hover:bg-white/5 transition-all"
+              className="relative w-14 h-7 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-medical-blue/50"
+              style={{
+                background: theme === 'light' 
+                  ? 'linear-gradient(135deg, #0EA5E9 0%, #3B82F6 100%)'
+                  : 'linear-gradient(135deg, #1F2937 0%, #374151 100%)'
+              }}
               aria-label="Toggle theme"
             >
-              {theme === 'light' ? <IconMap.Moon className="w-4 h-4" /> : <IconMap.Sun className="w-4 h-4" />}
+              <span 
+                className="absolute top-0.5 left-0.5 w-6 h-6 bg-white rounded-full shadow-lg transition-all duration-300 flex items-center justify-center"
+                style={{
+                  transform: theme === 'dark' ? 'translateX(28px)' : 'translateX(0)'
+                }}
+              >
+                {theme === 'light' ? (
+                  <IconMap.Sun className="w-3.5 h-3.5 text-yellow-500" />
+                ) : (
+                  <IconMap.Moon className="w-3.5 h-3.5 text-indigo-600" />
+                )}
+              </span>
             </button>
             
             <button
@@ -111,10 +127,26 @@ export const Header: React.FC = () => {
             <div className="flex flex-col gap-6 pt-12 border-t border-gray-200 dark:border-white/10">
               <button
                 onClick={toggleTheme}
-                className="w-full py-5 border border-gray-200 dark:border-white/10 rounded-2xl text-sm font-bold text-gray-900 dark:text-white flex items-center justify-center gap-3 transition-all"
+                className="w-full py-5 rounded-2xl text-sm font-bold flex items-center justify-between px-6 transition-all"
+                style={{
+                  background: theme === 'light' 
+                    ? 'linear-gradient(135deg, #0EA5E9 0%, #3B82F6 100%)'
+                    : 'linear-gradient(135deg, #1F2937 0%, #374151 100%)',
+                  color: '#FFFFFF'
+                }}
               >
-                {theme === 'light' ? <IconMap.Moon className="w-5 h-5" /> : <IconMap.Sun className="w-5 h-5" />}
-                {theme === 'light' ? 'Dark Mode' : 'Light Mode'}
+                <span className="flex items-center gap-3">
+                  {theme === 'light' ? <IconMap.Moon className="w-5 h-5" /> : <IconMap.Sun className="w-5 h-5" />}
+                  {theme === 'light' ? 'Dark Mode' : 'Light Mode'}
+                </span>
+                <div className="w-12 h-6 bg-white/20 rounded-full relative">
+                  <div 
+                    className="absolute top-0.5 w-5 h-5 bg-white rounded-full shadow-lg transition-transform duration-300"
+                    style={{
+                      transform: theme === 'dark' ? 'translateX(24px)' : 'translateX(2px)'
+                    }}
+                  />
+                </div>
               </button>
               <button
                 onClick={() => {
