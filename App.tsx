@@ -144,7 +144,7 @@ const App: React.FC = () => {
       <ThemeProvider>
         <Router>
           <ScrollToTop />
-          <div className="flex flex-col min-h-screen bg-white dark:bg-dark transition-colors duration-300">
+          <div className="flex flex-col min-h-screen bg-white transition-colors duration-300">
             <EmergencyBanner />
             <Header />
             <main className="flex-grow">
@@ -159,6 +159,20 @@ const App: React.FC = () => {
               </Routes>
             </main>
             <Footer />
+            
+            {/* Mobile Sticky Booking Bar */}
+            <div className="mobile-booking-bar">
+              <div className="mobile-booking-content">
+                <div className="mobile-booking-info">
+                  <div className="mobile-booking-title">Book Your Appointment</div>
+                  <div className="mobile-booking-subtitle">Free consultation available</div>
+                </div>
+                <a href="/contact" className="mobile-booking-btn">
+                  Book Now
+                </a>
+              </div>
+            </div>
+            
             <a href={CLINIC_SOCIALS.whatsapp} target="_blank" rel="noopener noreferrer" className="fixed bottom-8 right-8 z-[100] bg-[#25D366] text-white p-5 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all animate-bounce">
               <IconMap.MessageCircle className="w-8 h-8" />
             </a>
