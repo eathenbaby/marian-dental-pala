@@ -2,7 +2,7 @@
 import React from 'react';
 import { 
   Plus, Menu, X, Phone, Mail, MapPin, Star, Shield, 
-  Sparkles, Sun, Heart, AlertCircle, Brush, Layout, 
+  Sparkles, Sun, Moon, Heart, AlertCircle, Brush, Layout, 
   Scissors, Stethoscope, Scan, Box, MessageCircle,
   Calendar, ChevronRight, CheckCircle2, Award, Users, 
   Clock, Youtube, Instagram, Navigation, Download
@@ -14,6 +14,7 @@ export const IconMap: Record<string, any> = {
   Shield,
   Sparkles,
   Sun,
+  Moon,
   Heart,
   AlertCircle,
   Brush,
