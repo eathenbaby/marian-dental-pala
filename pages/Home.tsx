@@ -20,54 +20,41 @@ export const Home: React.FC = () => {
         <div className="container-wide">
           <div className="hero-split">
             <div className="hero-content">
-              <div className="open-indicator">
-                <div className="open-dot"></div>
+              <div className="hero-badge">
+                <div className="status-dot"></div>
                 Currently Open
               </div>
-              
               <h1>
-                {t('heroTitle').split(' ').map((word, i) => (
-                  <span key={i} className={i >= 2 && i <= 3 ? "gradient-text" : ""}>
-                    {word}{' '}
-                  </span>
-                ))}
+                World-Class Dental Care in <span className="gradient-text">Pala</span>
               </h1>
-              
-              <p>
-                {t('heroSubtitle')}
+              <p className="hero-subtitle">
+                Experience exceptional dental treatment with advanced technology and compassionate care at Marian Dental Clinic.
               </p>
-              
-              <div className="hero-ctas">
-                <Link to="/contact" className="hero-cta-primary">
+              <div className="hero-cta">
+                <Link to="/contact" className="btn-primary">
                   <IconMap.Calendar className="w-5 h-5" />
                   Book Free Consultation
                 </Link>
-                <a href={CLINIC_SOCIALS.whatsapp} target="_blank" rel="noopener noreferrer" className="hero-cta-secondary">
+                <a href={CLINIC_SOCIALS.whatsapp} target="_blank" rel="noopener noreferrer" className="btn-secondary">
                   <IconMap.MessageCircle className="w-5 h-5" />
                   WhatsApp Us
                 </a>
               </div>
-              
               <div className="trust-badges">
                 <div className="trust-badge">
-                  <IconMap.Star className="trust-badge-icon" />
-                  <span className="trust-badge-text">4.9★ Google Rating</span>
+                  <IconMap.Star className="w-4 h-4" />
+                  4.9 Google Rating
                 </div>
                 <div className="trust-badge">
-                  <IconMap.MapPin className="trust-badge-icon" />
-                  <span className="trust-badge-text">2 Locations</span>
+                  <IconMap.Users className="w-4 h-4" />
+                  15+ Years Experience
                 </div>
                 <div className="trust-badge">
-                  <IconMap.Shield className="trust-badge-icon" />
-                  <span className="trust-badge-text">Painless Treatment</span>
-                </div>
-                <div className="trust-badge">
-                  <IconMap.Award className="trust-badge-icon" />
-                  <span className="trust-badge-text">15+ Years</span>
+                  <IconMap.Award className="w-4 h-4" />
+                  ISO Certified
                 </div>
               </div>
             </div>
-            
             <div className="hero-visual">
               <div className="hero-image-wrapper">
                 <img 
@@ -75,7 +62,9 @@ export const Home: React.FC = () => {
                   alt="New Marian Dental Pala Interior" 
                   className="hero-image"
                 />
-                <div className="hero-image-overlay"></div>
+                <div className="hero-image-overlay">
+                  <span>State-of-the-Art Facility</span>
+                </div>
               </div>
             </div>
           </div>
@@ -143,25 +132,25 @@ export const Home: React.FC = () => {
       </section>
 
       {/* Before/After Gallery */}
-      <section className="py-32 bg-[#050810]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20 space-y-6">
-            <span className="text-primary font-bold text-xs uppercase tracking-[0.3em]">{t('transformation')}</span>
-            <h2 className="text-4xl md:text-6xl font-display font-bold text-white">{t('transformation')}</h2>
-            <p className="text-gray-500 max-w-2xl mx-auto">{t('transformationSub')}</p>
+      <section className="py-20 bg-gray-bg">
+        <div className="container-wide">
+          <div className="section-header">
+            <span className="badge">Transformations</span>
+            <h2 className="text-display">Real Results, Real Smiles.</h2>
+            <p>See the incredible transformations our patients have experienced through our advanced dental treatments.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {['Implants', 'RCT', 'Cosmetic', 'Whitening'].map((label, i) => (
-              <div key={i} className="group relative rounded-[32px] overflow-hidden aspect-[4/5] bg-white/5 border border-white/10">
+              <div key={i} className="group relative rounded-[32px] overflow-hidden aspect-[4/5] bg-white border border-gray-medium">
                 <img 
                   src={CLINIC_IMAGES.gallery[i]} 
                   alt={label} 
-                  className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-80 group-hover:scale-110 transition-all duration-700" 
+                  className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-90 group-hover:scale-110 transition-all duration-700" 
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-dark via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 via-transparent to-transparent" />
                 <div className="absolute bottom-8 left-8">
-                  <span className="bg-primary/20 text-primary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-2 inline-block">Case Study</span>
+                  <span className="bg-medical-blue/20 text-medical-blue px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-2 inline-block">Case Study</span>
                   <h4 className="text-xl font-display font-bold text-white">{label}</h4>
                 </div>
               </div>
