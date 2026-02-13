@@ -3,7 +3,17 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from './LanguageContext.tsx';
 import { useTheme } from './ThemeContext.tsx';
-import { IconMap } from './Icons.tsx';
+// import { IconMap } from './Icons.tsx'; // FORCED FIX: Broken import
+
+const IconMap = {
+  Tooth: () => <span>🦷</span>,
+  MapPin: () => <span>📍</span>,
+  ChevronDown: () => <span>▼</span>,
+  Sun: () => <span>☀️</span>,
+  Moon: () => <span>🌙</span>,
+  Menu: () => <span>☰</span>,
+  X: () => <span>✕</span>,
+};
 
 const LOCATIONS = [
   {
@@ -51,7 +61,7 @@ export const Header: React.FC = () => {
           {/* Logo */}
           <Link to="/" className="logo">
             <div className="logo-icon">
-              <IconMap.Plus className="w-5 h-5" />
+              <span>🦷</span>
             </div>
             <div>
               <div className="font-bold">NEW MARIAN</div>
@@ -75,7 +85,7 @@ export const Header: React.FC = () => {
           </nav>
 
           {/* Desktop Right Actions */}
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="header-actions">
             {/* Location Dropdown */}
             <div className="location-dropdown">
               <button
@@ -83,8 +93,9 @@ export const Header: React.FC = () => {
                 className="location-trigger"
               >
                 <IconMap.MapPin className="w-4 h-4" />
-                <span>{selectedLocation.name}</span>
+                <span>📍</span>
                 <IconMap.ChevronDown className="w-4 h-4" />
+                <span>▼</span>
               </button>
               <div className={`location-menu ${locationDropdownOpen ? 'show' : ''}`}>
                 {LOCATIONS.map((loc) => (
@@ -104,12 +115,9 @@ export const Header: React.FC = () => {
             </div>
 
             {/* Book Appointment CTA */}
-            <Link
-              to="/contact"
-              className="btn btn-green"
-            >
+            <a href="/contact" className="btn btn-green">
               Book Appointment
-            </Link>
+            </a>
 
             {/* Theme Toggle */}
             <button
@@ -119,9 +127,9 @@ export const Header: React.FC = () => {
             >
               <span className="theme-toggle-slider">
                 {theme === 'light' ? (
-                  <IconMap.Sun className="w-3 h-3" />
+                  <span>☀️</span>
                 ) : (
-                  <IconMap.Moon className="w-3 h-3" />
+                  <span>🌙</span>
                 )}
               </span>
             </button>
@@ -130,50 +138,47 @@ export const Header: React.FC = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-2"
+            className="mobile-menu-btn"
           >
-            {isMenuOpen ? <IconMap.X /> : <IconMap.Menu />}
+            <span>☰</span>
           </button>
         </div>
       </div>
 
       {/* Mobile Menu - Bottom Sheet */}
       {isMenuOpen && (
-        <div className="lg:hidden fixed inset-0 bg-black/50 z-[100]" onClick={() => setIsMenuOpen(false)}>
+        <div className="mobile-menu-overlay" onClick={() => setIsMenuOpen(false)}>
           <div 
-            className="absolute bottom-0 left-0 right-0 bg-white rounded-t-3xl p-6 animate-in slide-in-from-bottom duration-300"
+            className="mobile-menu-sheet"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="w-12 h-1 bg-gray-300 rounded-full mx-auto mb-6" />
             <button 
               onClick={() => setIsMenuOpen(false)} 
-              className="absolute top-6 right-6"
+              className="mobile-menu-close"
             >
               <IconMap.X className="w-6 h-6" />
             </button>
             
-            <div className="space-y-4">
+            <div className="mobile-menu-nav">
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
                   onClick={() => setIsMenuOpen(false)}
-                  className={`block py-3 text-lg font-semibold ${
-                    location.pathname === link.path ? 'text-medical-blue' : 'text-gray-900'
-                  }`}
+                  className="mobile-menu-link"
                 >
                   {link.name}
                 </Link>
               ))}
               
-              <div className="pt-4 border-t border-gray-200">
-                <Link
-                  to="/contact"
+              <div className="mobile-menu-cta">
+                <a
+                  href="/contact"
                   onClick={() => setIsMenuOpen(false)}
-                  className="w-full bg-medical-green text-white text-center py-4 rounded-2xl font-bold block"
+                  className="mobile-menu-cta-btn"
                 >
                   Book Appointment
-                </Link>
+                </a>
               </div>
             </div>
           </div>
